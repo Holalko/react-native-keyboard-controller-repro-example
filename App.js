@@ -1,20 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {KeyboardAwareScrollView, KeyboardProvider} from 'react-native-keyboard-controller'
+import {Text, TextInput, View} from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <View style={{ flex: 1 }}>
+        <KeyboardProvider>
+          <KeyboardAwareScrollView>
+            <View style={{ height: 800, backgroundColor: 'lightblue' }} />
+            <Text>Input:</Text>
+            <TextInput
+                style={{ height: 44, borderStyle: 'solid', borderWidth: 1, borderColor: 'black' }}
+                autoComplete="email" // or textContentType="emailAddress"
+            />
+            <View style={{ height: 800, backgroundColor: 'lightblue' }} />
+          </KeyboardAwareScrollView>
+        </KeyboardProvider>
+      </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
